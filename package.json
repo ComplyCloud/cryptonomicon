@@ -1,0 +1,58 @@
+{
+  "name": "@complycloud/cryptonomicon",
+  "version": "0.0.0",
+  "description": "Functional Javascript library providing common cryptographic routines",
+  "main": "dist",
+  "repository": "https://github.com/complycloud/cryptonomicon",
+  "author": "Sean Bruton <sean@sean.cloud>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "check": "npm run lint && npm run test",
+    "clean": "rm -rf ./dist",
+    "compile": "npm run clean && babel src ${WATCH:+--watch} --source-maps inline --out-dir dist",
+    "compile:watch": "WATCH=true npm run compile",
+    "lint": "eslint src test",
+    "test": "mocha ${WATCH:+--watch} ${DEBUGGER:+--inspect --debug-brk} --recursive --compilers js:babel-register",
+    "test:watch": "WATCH=true npm run test"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-string": "^1.4.0",
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "karma": "^1.7.1",
+    "karma-babel-preprocessor": "^7.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-safari-launcher": "^1.0.0",
+    "mocha": "^3.5.3",
+    "nock": "^9.0.18",
+    "pre-commit": "^1.2.2",
+    "qs": "^6.5.1"
+  },
+  "pre-commit": [
+    "check"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": true
+          }
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "debug": "^3.0.1"
+  }
+}
